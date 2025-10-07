@@ -2,6 +2,14 @@
 
 
 // Enviar la frase a Huffman.js
-const frase = "peter piper picked a picked pepper";
-const resultado = huffman(frase);
+const frase = "codigo oso";
+//Destructuring de la salida de huffman.js
+const { 
+    matriz: matrizResultados, 
+    largoMedioTotal: lmt, 
+    entropiaTotal: et, 
+    eficiencia: eff 
+} = huffman(frase);
 
+
+console.log("OMG", matrizResultados, lmt, et, eff);

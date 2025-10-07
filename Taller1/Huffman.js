@@ -111,6 +111,58 @@ function generarCodigosHuffman(nodo, codigoActual = '', codigos = {}) {
     return codigosOrdenados;
 }
 
+
+function calcularLargoMedio(matrizResultados) {
+    // Recorrer cada fila de la matriz
+    for (let i = 0; i < matrizResultados.length; i++) {
+        const fila = matrizResultados[i];
+        const probabilidad = fila[1];        // Columna 2: Probabilidad
+        const codigo = fila[2];              // Columna 3: Código Huffman
+        const longitudCodigo = codigo.length;
+        const largoMedio = probabilidad * longitudCodigo;
+        
+        // Asignar el resultado a la columna 4
+        fila[3] = largoMedio.toFixed(3);
+    }
+    
+    return matrizResultados;
+}
+
+function calcularLargoMedioTotal(matrizResultados) {
+    return matrizResultados.reduce((suma, fila) => suma + Number(fila[3]), 0).toFixed(3);
+}
+
+
+function calcularEntropia(matrizResultados) {
+    // Recorrer cada fila de la matriz
+    for (let i = 0; i < matrizResultados.length; i++) {
+        const fila = matrizResultados[i];
+        const probabilidad = fila[1];        // Columna 2: Probabilidad
+        
+        // Calcular entropía: p * log2(1/p)
+        let entropia = 0;
+        if (probabilidad > 0) {
+            entropia = probabilidad * Math.log2(1 / probabilidad);
+        }
+        
+        // Asignar el resultado a la columna 5
+        fila[4] = entropia.toFixed(3);
+    }
+    
+    return matrizResultados;
+}
+
+function calcularEntropiaTotal(matrizResultados) {
+    return matrizResultados.reduce((suma, fila) => suma + Number(fila[4]), 0).toFixed(3);
+}
+
+
+function calcularEficiencia(largoMedioTotal, entropiaTotal) {
+    const eficiencia = (entropiaTotal / largoMedioTotal) * 100;
+    return eficiencia.toFixed(2);
+}
+
+
 function huffman(frase){
     const resultado = contarLetras(frase);
     const totalSimbolos = frase.length;
@@ -120,9 +172,53 @@ function huffman(frase){
     const arbol = construirArbolHuffman(probabilidades);
     const codigos = generarCodigosHuffman(arbol);
     
+    // Crear la matriz con las columnas solicitadas
+    let matrizResultados = probabilidades.map(item => {
+        return [
+            item.simbolo === ' ' ? 'espacio' : item.simbolo, // Columna 1: Símbolo
+            item.probabilidad,                               // Columna 2: Probabilidad
+            codigos[item.simbolo] || '',                    // Columna 3: Código Huffman
+            null,                                           // Columna 4: Largo Medio 
+            null                                            // Columna 5: Entropía
+        ];
+    });
+    console.log("Matriz");
+    console.log(matrizResultados);
+
+    //Calcular largo medio de cada simbolo
+    matrizResultados = calcularLargoMedio(matrizResultados);
+
+    // Calcular el largo medio total
+    const largoMedioTotal = calcularLargoMedioTotal(matrizResultados);
+    
+
+    //Calcular la entropía de cada simbolo
+    matrizResultados = calcularEntropia(matrizResultados);
+
+    // Calcular la entropía total
+    const entropiaTotal = calcularEntropiaTotal(matrizResultados);
+    
+
+    //Calcular la eficiencia
+    const eficiencia = calcularEficiencia(largoMedioTotal, entropiaTotal);
+
+
+
+
+
 
 
     //Zona de verificación por consola Borrar al acabar
+//--------------------------------------------------------------
+
+    console.log("Largo medio total");
+    console.log(largoMedioTotal);
+
+    console.log("Entropía total");
+    console.log(entropiaTotal);
+
+    console.log("Eficiencia");
+    console.log(eficiencia + "%");
 
     console.log("Frase analizada:", frase);
     console.log("Total de símbolos:", totalSimbolos);
@@ -136,6 +232,7 @@ function huffman(frase){
     }
     
     //mostrar probabilidades
+    console.log("Probabilidades:");
     probabilidades.forEach(item => {
         const simboloMostrar = item.simbolo === ' ' ? 'espacio' : item.simbolo;
         console.log(`- ${simboloMostrar}: ${item.probabilidad}`);
@@ -146,11 +243,15 @@ function huffman(frase){
         const mostrar = letra === ' ' ? 'espacio' : letra;
         console.log(`- ${mostrar}: ${resultado[letra]}`);
     }
+//--------------------------------------------------------------
 
 
-    return {
-        probabilidades: probabilidades,
-        codigos: codigos,
-        arbol: arbol,
+
+
+     return {
+        matriz: matrizResultados,
+        largoMedioTotal: largoMedioTotal,
+        entropiaTotal: entropiaTotal,
+        eficiencia: eficiencia
     };
 }
