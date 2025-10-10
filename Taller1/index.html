@@ -1,14 +1,65 @@
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CODIFICACIÓN DE HUFFMAN</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Codificación de Huffman</h1>
+        
+        <!-- Entrada del mensaje -->
+        <div class="input-section">
+            <label for="mensaje">Ingrese su mensaje:</label>
+            <input type="text" id="mensaje" placeholder="Escriba aquí su mensaje..." value="mi mama me mima">
+            <button onclick="procesarMensaje()">Codificar</button>
+        </div>
 
+        <!-- Sección de resultados -->
+        <div class="results-section" id="resultsSection" style="display: none;">
+            
+            <!-- Mostrar entropía, largo medio y eficiencia -->
+            <div class="metrics-section">
+                <h2>Métricas del Código</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <h3>Entropía Total</h3>
+                        <span id="entropiaTotal" class="metric-value">-</span>
+                        <span class="metric-unit">bits</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Largo Medio</h3>
+                        <span id="largoMedio" class="metric-value">-</span>
+                        <span class="metric-unit">bits/símbolo</span>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Eficiencia</h3>
+                        <span id="eficiencia" class="metric-value">-</span>
+                        <span class="metric-unit">%</span>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Generar archivo -->
+            <div class="download-section">
+                <h2>Generar Archivo</h2>
+                <p>Descarga un archivo con el diccionario de códigos Huffman y el mensaje codificado:</p>
+                <button onclick="generarArchivo()" class="download-btn">
+                    📁 Descargar Diccionario y Mensaje Codificado
+                </button>
+            </div>
 
-
+            <!-- Información adicional para visualización -->
+            <div class="additional-info">
+                <h3>Mensaje Codificado</h3>
+                <div id="mensajeCodificado" class="coded-message"></div>
+                
+                <h3>Diccionario de Códigos</h3>
+                <div id="diccionario" class="dictionary"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Incluir los archivos JS -->
     <script src="Huffman.js"></script>

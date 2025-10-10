@@ -182,8 +182,6 @@ function huffman(frase){
             null                                            // Columna 5: Entropía
         ];
     });
-    console.log("Matriz");
-    console.log(matrizResultados);
 
     //Calcular largo medio de cada simbolo
     matrizResultados = calcularLargoMedio(matrizResultados);
@@ -201,51 +199,6 @@ function huffman(frase){
 
     //Calcular la eficiencia
     const eficiencia = calcularEficiencia(largoMedioTotal, entropiaTotal);
-
-
-
-
-
-
-
-    //Zona de verificación por consola Borrar al acabar
-//--------------------------------------------------------------
-
-    console.log("Largo medio total");
-    console.log(largoMedioTotal);
-
-    console.log("Entropía total");
-    console.log(entropiaTotal);
-
-    console.log("Eficiencia");
-    console.log(eficiencia + "%");
-
-    console.log("Frase analizada:", frase);
-    console.log("Total de símbolos:", totalSimbolos);
-    console.log(arbol);
-
-    // Mostrar códigos Huffman
-    console.log("CÓDIGOS HUFFMAN");
-    for (let simbolo in codigos) {
-        const simboloMostrar = simbolo === ' ' ? 'espacio' : simbolo;
-        console.log(`- ${simboloMostrar}: ${codigos[simbolo]}`);
-    }
-    
-    //mostrar probabilidades
-    console.log("Probabilidades:");
-    probabilidades.forEach(item => {
-        const simboloMostrar = item.simbolo === ' ' ? 'espacio' : item.simbolo;
-        console.log(`- ${simboloMostrar}: ${item.probabilidad}`);
-    });
-
-    console.log("Resultado del conteo:");
-    for (let letra in resultado) {
-        const mostrar = letra === ' ' ? 'espacio' : letra;
-        console.log(`- ${mostrar}: ${resultado[letra]}`);
-    }
-//--------------------------------------------------------------
-
-
 
 
      return {
