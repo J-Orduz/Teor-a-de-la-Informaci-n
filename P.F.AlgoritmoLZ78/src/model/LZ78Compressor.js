@@ -1,0 +1,1 @@
+//Clase que maneja la compresión

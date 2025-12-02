@@ -1,0 +1,1 @@
+// Funciones genéricas (formato, validación)

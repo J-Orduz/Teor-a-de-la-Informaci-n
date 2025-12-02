@@ -1,0 +1,1 @@
+// Algoritmo puro de codificación LZ78

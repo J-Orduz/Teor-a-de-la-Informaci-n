@@ -1,0 +1,1 @@
+//Valida archivos (vacío, formato, legibilidad)

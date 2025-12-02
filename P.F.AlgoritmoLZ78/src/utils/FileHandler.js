@@ -1,0 +1,1 @@
+// Manejo de File API (lectura/escritura)
