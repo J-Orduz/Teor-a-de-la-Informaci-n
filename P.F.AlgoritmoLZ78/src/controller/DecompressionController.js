@@ -57,6 +57,7 @@ export class DecompressionController {
             };
 
             // 7. Actualizar vistas
+            this.viewManager.updateTextView(result.decompressedText, 'Texto Descomprimido');
             this.viewManager.updateDictionaryView(result.dictionary);
             this.viewManager.updateStatisticsView(stats);
             this.viewManager.showSuccess('Descompresión completada exitosamente.');

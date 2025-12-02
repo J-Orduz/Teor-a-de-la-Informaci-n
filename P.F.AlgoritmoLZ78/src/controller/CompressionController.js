@@ -55,6 +55,7 @@ export class CompressionController {
             };
 
             // 6. Actualizar vistas
+            this.viewManager.updateTextView(text, 'Texto Original');
             this.viewManager.updateDictionaryView(result.dictionary);
             this.viewManager.updateStatisticsView(stats);
             this.viewManager.showSuccess('Compresión completada exitosamente.');

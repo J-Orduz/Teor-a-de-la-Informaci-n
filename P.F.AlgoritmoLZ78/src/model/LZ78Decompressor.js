@@ -23,8 +23,12 @@ export class LZ78Decompressor {
         }
 
         // 1. Calcular tamaño comprimido
-        this.compressedSize = lz78String.length * 2;
+        //encodedData = stringToEncoded(lz78String);
+        //this.compressedSize = encodedData.length * 2;
         //this.compressedSize = new Blob([lz78String]).size;
+        const lines = lz78String.trim().split('\n');
+        const pairCount = lines.filter(line => line.trim() !== '').length;
+        this.compressedSize = pairCount * 2;
 
         // 2. Parsear string a datos codificados
         this.encodedData = stringToEncoded(lz78String);

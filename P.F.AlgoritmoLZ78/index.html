@@ -1,25 +1,23 @@
-<!--Punto de entrada único, Incluye <script> para AppView.js y UIController.js -->
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compresor LZ78 - Teoría de la Información</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
 </head>
 <body>
+    <!-- Contenedor principal donde AppView inyectará toda la interfaz -->
     <div id="app">
-        <!-- FileUploadView renderiza aquí -->
-        <div id="file-upload-area"></div>
-        
-        <!-- DictionaryView renderiza aquí -->
-        <div id="dictionary-view"></div>
-        
-        <!-- StatisticsView renderiza aquí -->
-        <div id="stats-view"></div>
-        
-        <!-- MessagesView renderiza aquí -->
-        <div id="messages-area"></div>
+        <!-- Mensaje de carga mientras se carga la aplicación -->
+        <div class="loading-screen">
+            <div class="loading-spinner"></div>
+            <p>Cargando aplicación LZ78...</p>
+        </div>
     </div>
 
-    <script type="module" src="src/vista/AppView.js"></script>
-    <script type="module" src="src/controller/UIController.js"></script>
+    <!-- Script principal que inicializa toda la aplicación -->
+    <script type="module" src="main.js"></script>
 </body>
 </html>
