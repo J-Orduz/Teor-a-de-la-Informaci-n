@@ -1,1 +1,25 @@
-<!--Punto de entrada único -->
+<!--Punto de entrada único, Incluye <script> para AppView.js y UIController.js -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- FileUploadView renderiza aquí -->
+        <div id="file-upload-area"></div>
+        
+        <!-- DictionaryView renderiza aquí -->
+        <div id="dictionary-view"></div>
+        
+        <!-- StatisticsView renderiza aquí -->
+        <div id="stats-view"></div>
+        
+        <!-- MessagesView renderiza aquí -->
+        <div id="messages-area"></div>
+    </div>
+
+    <script type="module" src="src/vista/AppView.js"></script>
+    <script type="module" src="src/controller/UIController.js"></script>
+</body>
+</html>

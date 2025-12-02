@@ -1,1 +1,1 @@
-// Muestra estadísticas
+// Muestra tamaño original, comprimido y porcentaje.

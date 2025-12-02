@@ -1,1 +1,1 @@
-// Muestra errores/éxitos
+// Muestra mensajes de error/éxito (ej: “Archivo vacío”, “Compresión exitosa”).
